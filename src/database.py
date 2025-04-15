@@ -8,11 +8,11 @@ import os
 load_dotenv()
 
 dialecto = os.getenv("DB_CONNECTION")
-username = os.getenv("DB_USERNAME")
-password = os.getenv("DB_PASSWORD")
-host = os.getenv("DB_HOST")
-port = os.getenv("DB_PORT")
-database = os.getenv("DB_NAME")
+username = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PASSWORD")
+host = os.getenv("POSTGRES_HOST")
+port = os.getenv("POSTGRES_PORT")
+database = os.getenv("POSTGRES_DATABASE")
 
 database_url = f"{dialecto}://{username}:{password}@{host}:{port}/{database}"
 

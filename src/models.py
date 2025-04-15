@@ -29,5 +29,5 @@ class Tarea(Base):
     descripcion = Column(String, index=True, nullable=False, unique=True)
     estado = Column(Enum(EstadoTarea), nullable=False)
     creado_en = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
-    usuario_id = Column(Integer, ForeignKey("Usuario.id"))
+    usuario_id = Column(Integer, ForeignKey("usuarios.id"))
     usuario = relationship("Usuario")
