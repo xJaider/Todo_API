@@ -1,0 +1,5 @@
+Aqui iran los usuarios que se van a almacenar en la base de datos:
+
+Usuario 1:
+    email: jaider@ejemplo.com
+    password: Jaider1234
