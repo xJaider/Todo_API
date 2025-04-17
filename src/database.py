@@ -20,4 +20,12 @@ engine = create_engine(database_url, echo=True) # Creando el motor de conexion
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
 Base = declarative_base() # Creando la clase Base para que los modelos puedan heredarlas
+
