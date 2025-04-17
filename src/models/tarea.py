@@ -3,25 +3,13 @@ import enum
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from datetime import date
-from .database import Base
+from ..database import Base
 
-class RolUsuario(enum.Enum):
-    ADMIN = "admin"
-    USUARIO = "usuario"
+from ..models.usuario import Usuario
 
 class EstadoTarea(enum.Enum):
     pendiente = "pendiente"
     completado = "completado"
-
-class Usuario(Base):
-    __tablename__="usuarios"
-
-    id = Column(Integer, primary_key=True, unique=True, index=True, nullable=False)
-    username  = Column(String(255), index=True, nullable=False, unique=True)
-    email = Column(String, index=True, nullable=False, unique=True)
-    password_hash = Column(String, index=True, nullable=False)
-    role = Column(Enum(RolUsuario), nullable=False)
-    created_at = Column(Date, default=date.today, nullable=False)
 
 class Tarea(Base):
     __tablename__="tareas"

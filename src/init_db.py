@@ -1,4 +1,5 @@
 from src.database import engine, Base
-from src import models
+from .models.tarea import Tarea
+from .models.usuario import Usuario
 
 Base.metadata.create_all(engine)

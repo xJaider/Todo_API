@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..schemas.tarea import TareaCreate, TareaOut
-from ..crud import crear_tarea, crear_usuario_prueba
+from ..schemas.tarea import TareaCreate
+from ..crud.tarea import crear_tarea
+from ..crud.usuario import crear_usuario_prueba
 from ..database import get_db
 
 router = APIRouter()
