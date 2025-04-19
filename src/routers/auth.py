@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..schemas.usuario import UsuarioLogin
-from ..auth import comprobar_sesion
+from ..auth import comprobar_sesion, generar_token
 
 router = APIRouter()
 
@@ -21,8 +21,7 @@ def login(usuario:UsuarioLogin, db: Session = Depends(get_db)):
         if verificacion is None:
             raise HTTPException(status_code=401, detail="Credenciales incorrectas")
         else:
-            return {"mensaje": "Login exitoso"}
-        pass
+            return generar_token(id=verificacion.id, role=verificacion.role.value)
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error al logearse: {str(e)}")
     
