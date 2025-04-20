@@ -1,3 +1,5 @@
+# src/models/usuario.py
+
 import enum
 
 from sqlalchemy import Column, Integer, String, Enum, Date

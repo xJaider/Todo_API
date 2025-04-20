@@ -1,3 +1,5 @@
+# src/models/tarea.py
+
 import enum
 
 from sqlalchemy import Column, Integer, String, Enum, ForeignKey, Date
