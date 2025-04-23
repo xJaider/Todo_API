@@ -5,3 +5,9 @@ Usuario 1:
   "email": "jaider@ejemplo.com",
   "password": "Jaider1234"
 }
+
+Usuario 2:
+{
+  "email": "anderson@ejemplo.com",
+  "password": "Anderson1234"
+}

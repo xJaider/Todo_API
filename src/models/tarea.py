@@ -17,8 +17,8 @@ class Tarea(Base):
     __tablename__="tareas"
 
     id = Column(Integer, primary_key=True, unique=True, index=True, nullable=False)
-    titulo = Column(String, index=True, nullable=False, unique=True)
-    descripcion = Column(String, index=True, nullable=False, unique=True)
+    titulo = Column(String, index=True, nullable=False)
+    descripcion = Column(String, index=True, nullable=False)
     estado = Column(Enum(EstadoTarea), nullable=False)
     fecha_vencimiento = Column(Date, nullable=False)
     creado_en = Column(Date, default=date.today, nullable=False)
