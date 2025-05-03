@@ -4,7 +4,7 @@ from datetime import date
 
 from sqlalchemy.orm import Session
 
-from ..schemas.usuario import UsuarioCreate
+from ..schemas.usuario import UsuarioCreate, UsuarioResponse
 from ..models.usuario import Usuario, RolUsuario
 from ..auth import hash_password
 
@@ -30,10 +30,10 @@ def crear_usuario_prueba(db: Session):
 def crear_usuario(db:Session, usuario:UsuarioCreate):
 
     if db.query(Usuario).filter(Usuario.email == usuario.email).first():
-        return "Email ya registrado"
+        return None
 
     if db.query(Usuario).filter(Usuario.username == usuario.username).first():
-        return "Username ya registrado"
+        return None
     
     nuevo_usuario = Usuario(
         username=usuario.username,
@@ -47,3 +47,10 @@ def crear_usuario(db:Session, usuario:UsuarioCreate):
     db.refresh(nuevo_usuario)
 
     return nuevo_usuario
+
+def obtener_usuario(db: Session, usuario_id: int):
+    usuario = db.query(Usuario).filter(Usuario.id == usuario_id).first()
+    if not usuario:
+        return None
+    usuario_schema = UsuarioResponse.model_validate(usuario).model_dump()
+    return usuario_schema

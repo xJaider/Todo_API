@@ -22,5 +22,11 @@ class UsuarioLogin(BaseModel):
     email: str
     password: str
 
+class UsuarioResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+    role: RolUsuario
+    created_at: date
 
-model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
